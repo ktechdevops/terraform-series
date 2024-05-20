@@ -1,0 +1,8 @@
+---
+- name: Set Timezone on Hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: Set timezone to Africa/Lagos
+      community.general.timezone:
+        name: Africa/Lagos

@@ -1,0 +1,15 @@
+---
+- name: Init Kubernetes Cluster.
+  hosts: k8s-cluster
+  become: true
+  become_method: ansible.builtin.sudo
+  become_user: root
+
+  tasks:
+    - name: Prepare hosts
+      ansible.builtin.script: files/common.sh
+      register: script_out
+
+    - name: Display script output using script module
+      ansible.builtin.debug:
+        var: script_out.stdout_lines
